@@ -1,6 +1,6 @@
 # VHDUSBDownloader
 
-#![logo](https://github.com/SongDrop/vhdusbdownloader/blob/main/src/icon.png)
+#![logo](https://github.com/SongDrop/vhdusbdownloader/blob/main/vhdusbdownloader.png)
 
 This is an Electron app that allows you to download large files (like VHD snapshots) directly to USB drives with a GUI, progress tracking, and resume support.
 
