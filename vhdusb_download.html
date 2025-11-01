@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅VHD Conversion Completed</title>
+    <link rel="icon" href="https://cdn.sdappnet.cloud/rtx/images/vhdusbdownloader.png" type="image/png" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .vm-details {
+            background: #f1f8e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .detail-row {
+            margin-bottom: 10px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px 5px 0 0;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #2ecc71;
+        }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+        }
+
+        .footer {
+            font-size: 0.85rem;
+            text-align: center;
+            color: #555;
+            margin-top: 40px;
+        }
+
+        .link {
+            word-break: break-all;
+            color: #1a73e8;
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        th {
+            background: #f1f8e9;
+            text-align: left;
+        }
+
+        td.center {
+            text-align: center;
+        }
+
+        td.right {
+            text-align: right;
+        }
+
+        td.success {
+            background: #e0f7e9;
+        }
+
+        td.error {
+            background: #fde0e0;
+        }
+
+        .flex-images {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .flex-images div {
+            flex: 1 1 45%;
+            text-align: center;
+        }
+
+        .flex-images img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 8px;
+        }
+
+        .timeline-horizontal {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .timeline-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #ccc;
+            z-index: 0;
+        }
+
+        .timeline-step-h {
+            position: relative;
+            z-index: 1;
+            background: #4caf50;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .timeline-step-h.done::after {
+            content: '✔️';
+            margin-left: 6px;
+        }
+
+        .timeline-step-h.download {
+            background: #2196f3;
+        }
+
+        .timeline-step-h.download::after {
+            content: '⬇️';
+            margin-left: 6px;
+        }
+
+        .conversion-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.75rem;
+        }
+
+        .conversion-table th,
+        .conversion-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            vertical-align: top;
+            background: white;
+
+        }
+
+        .conversion-table th {
+            text-align: left;
+            width: 60%;
+            font-weight: normal;
+        }
+
+        .conversion-table td {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        /* Container for the app description */
+        .vhd-container {
+            display: flex;
+            /* flex */
+            align-items: center;
+            /* items-center */
+            gap: 0.5rem;
+            /* gap-2, where 1 unit is 0.25rem */
+        }
+
+        /* App icon image */
+        .vhd-icon {
+            width: 9rem;
+            /* w-36, where 1 unit is 0.25rem */
+            height: 9rem;
+            /* h-36, where 1 unit is 0.25rem */
+        }
+
+        /* Download links container */
+        .download-links {
+            margin-top: 0.75rem;
+            /* mt-3, where 1 unit is 0.25rem */
+            display: flex;
+            /* flex */
+            flex-wrap: wrap;
+            /* flex-wrap */
+            gap: 0.5rem;
+            /* gap-2, where 1 unit is 0.25rem */
+        }
+
+        /* Individual download link buttons */
+        .download-link {
+            display: flex;
+            /* flex */
+            align-items: center;
+            /* items-center */
+            gap: 0.5rem;
+            /* gap-2, where 1 unit is 0.25rem */
+            padding: 0.5rem 0.75rem;
+            /* px-3 py-2, where 1 unit is 0.25rem */
+            border-radius: 0.5rem;
+            /* rounded-lg, where a large radius is 0.5rem */
+            font-size: 0.875rem;
+            /* text-sm, where small text is 0.875rem */
+            font-weight: 500;
+            /* font-medium, corresponds to a font-weight of 500 */
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            /* shadow-sm */
+            color: white;
+            /* All links have white text, but the colors are overridden below */
+            text-decoration: none;
+            /* Removes underline from links */
+        }
+
+        /* Image icon inside each link */
+        .link-icon {
+            width: 1.25rem;
+            /* w-5, where 1 unit is 0.25rem */
+            height: 1.25rem;
+            /* h-5, where 1 unit is 0.25rem */
+        }
+
+        /* Specific styling for each OS link, including colors and hover states */
+        .windows {
+            background-color: #2563EB;
+            /* bg-blue-600 */
+        }
+
+        .windows:hover {
+            background-color: #1D4ED8;
+            /* hover:bg-blue-700 */
+        }
+
+        .macos {
+            background-color: #111827;
+            /* bg-gray-900 */
+        }
+
+        .macos:hover {
+            background-color: #000000;
+            /* hover:bg-black */
+        }
+
+        .linux {
+            background-color: #4B5563;
+            /* bg-gray-700 */
+        }
+
+        .linux:hover {
+            background-color: #374151;
+            /* hover:bg-gray-800 */
+        }
+
+        .vhdusb {
+            padding: 4px;
+            width: 100%;
+        }
+
+        .vhdusb img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>✅ Hyper-V Disk Conversion Successful</h1>
+
+        <div class="section">
+            <p>Your virtual machine snapshot has been successfully converted and resized using Hyper-V technology. The
+                original snapshot was <strong>256GB</strong> and has been optimized to <strong>220GB</strong> for
+                efficient storage and faster access.</p>
+
+            <p>You can now download this VHD using the <strong>VHDUSBDownloader</strong> app — a lightweight tool that
+                safely copies large VHD files directly to your USB drive. Simply copy the link below into the app to
+                start the transfer:</p>
+
+            <p>📦 <strong>Download Note:</strong> The file is large (<strong>220GB</strong>), so the download may take
+                ~8-10 hours on a 10Mbps connection. We recommend using a stable, wired connection and keeping your
+                computer powered on.</p>
+        </div>
+        <div class="timeline-horizontal">
+            <div class="timeline-step-h done">Snapshot</div>
+            <div class="timeline-step-h done">Hyper-V</div>
+            <div class="timeline-step-h done">.vhd</div>
+            <div class="timeline-step-h download">Download</div>
+        </div>
+
+        <div class="section vm-details">
+            <div class="detail-row"><span class="detail-label">Snapshot Name:</span> <span>{snapshot_vm}</span></div>
+            <div class="detail-row"><span class="detail-label">Conversion Time:</span> <span>
+                    <table class="conversion-table">
+                        <tr>
+                            <th>✅ Create Snapshot</th>
+                            <td>~10 minutes</td>
+                        </tr>
+                        <tr>
+                            <th>✅ Create Hyper-V (Standard_D4s_v3)</th>
+                            <td>~15 minutes</td>
+                        </tr>
+                        <tr>
+                            <th>✅ Download 256 GB snapshot (Hyper-V conversion)</th>
+                            <td>~1 hour (network-dependent)</td>
+                        </tr>
+                        <tr>
+                            <th>✅ Hyper-V Conversion (dynamic → compact → fixed)</th>
+                            <td>~2 hours</td>
+                        </tr>
+                        <tr>
+                            <th>✅ Upload to storage (azcopy)</th>
+                            <td>~1 hour</td>
+                        </tr>
+                        <tr>
+                            <th>✅ Cleanup Hyper-V and Snapshot</th>
+                            <td>~10 minutes</td>
+                        </tr>
+                        <tr>
+                            <th><strong>⬇️ Download VHD to USB (VHDUSBDownloader)</strong></th>
+                            <td><strong>~10 hours (10Mbps) <br><small>(up to 120Mbps faster)</small></strong>
+                            </td>
+                        </tr>
+
+                    </table>
+                </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Status:</span> <span>Completed</span></div>
+            <div style="margin-top:8px; display:flex; align-items:center; gap:8px;">
+                ⬇️
+                <input type="text" id="vhd-url-input" value="{vhd_download_url}" readonly
+                    style="flex:1; padding:4px; border-radius:6px; border:1px solid #ccc; font-size:0.9rem;" />
+                <button id="copy-vhd-url"
+                    style="padding:4px 8px; border-radius:6px; background:#4caf50; color:white; border:none; cursor:pointer;">
+                    Copy
+                </button>
+            </div>
+            <p style="margin-top:4px; font-size:0.85rem; color:#555;">
+                Use <strong>VHDUSBDownloader</strong> to download large VHD files directly to your USB safely.
+            </p>
+
+        </div>
+
+        <div class="section">
+            <h2>Recommended USB Drives for Your VHD</h2>
+            <p>To store your optimized <strong>220GB VHD</strong>, here are compatible USB drives:</p>
+            <div class="flex-images">
+                <div>
+                    <img src="https://i.postimg.cc/15LtWMHN/256gb-fit-plus-usb.png" alt="Samsung 256GB USB">
+                    <p><a href="https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drive-fit-plus-256gb-black-muf-256ab-apc/"
+                            target="_blank">256GB USB</a></p>
+                </div>
+                <div>
+                    <img src="https://i.postimg.cc/pTGVKBrr/512gb-fit-plus-usb.png" alt="Samsung 512GB USB">
+                    <p><a href="https://www.samsung.com/uk/memory-storage/usb-flash-drive/usb-flash-drive-fit-plus-512gb-black-muf-512ab-apc/"
+                            target="_blank">512GB USB</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <p style="margin-top:15px;">Note: USB drives and VHDs use different definitions of "GB":</p>
+            <div>- <strong>USB drives:</strong> Decimal GB (1 GB = 1,000,000,000 bytes)</div>
+            <div>- <strong>VHD disks:</strong> Binary GB (1 GB = 1,073,741,824 bytes)</div>
+
+            <p>For example, an exported OS disk of <strong>256 GB</strong> would not fit on a USB labeled as 256 GB.
+                That’s why the disk was resized during conversion, reducing it from 256 GB to 220 GB to ensure it fits
+                safely on typical USB drives.</p>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Before Conversion</th>
+                    <th class="center">USB Fit?</th>
+                    <th>After Conversion</th>
+                    <th class="center">USB Fit?</th>
+                </tr>
+                <tr>
+                    <th>VHD Size (Bytes)</th>
+                    <td class="right error">256 × 1,073,741,824 = 274,877,906,944</td>
+                    <td class="center error">❌ Too large</td>
+                    <td class="right success">220 × 1,073,741,824 = 236,222,120,320</td>
+                    <td class="center success">✅ Fits USB</td>
+                </tr>
+                <tr>
+                    <th>Equivalent USB GB</th>
+                    <td class="right error">≈ 274.88 GB</td>
+                    <td class="center error">❌ Too large</td>
+                    <td class="right success">≈ 236.22 GB</td>
+                    <td class="center success">✅ Fits USB</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="vhd-container">
+            <img src="https://cdn.sdappnet.cloud/rtx/images/vhdusbdownloader.png" alt="vhdusbdownloader icon"
+                class="vhd-icon" />
+            <span class="vhd-text">
+                Use <strong>vhdusbdownloader</strong> (Electron app) to download the VHD from a URL directly to a USB
+                drive and
+                make it bootable. Large files (e.g., 256GB or more) can take many hours — for example, at 10MB/s a 256GB
+                image
+                takes roughly 7 hours to complete. The app includes built-in <strong>resume support</strong>, so if the
+                transfer
+                is interrupted you don’t need to start over.
+            </span>
+        </div>
+        <div class="download-links">
+            <a target="_blank" rel="noreferrer" href="https://github.com/SongDrop/vhdusbdownloader/releases/tag/public"
+                class="download-link windows">
+                <img src="https://img.icons8.com/color/24/000000/windows-10.png" alt="Windows logo" class="link-icon" />
+                Windows
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://github.com/SongDrop/vhdusbdownloader/releases/tag/public"
+                class="download-link macos">
+                <img src="https://img.icons8.com/ios-filled/24/ffffff/mac-os.png" alt="Mac logo" class="link-icon" />
+                macOS
+            </a>
+            <a target="_blank" rel="noreferrer" href="https://github.com/SongDrop/vhdusbdownloader/releases/tag/public"
+                class="download-link linux">
+                <img src="https://img.icons8.com/color/24/000000/linux.png" alt="Linux logo" class="link-icon" />
+                Linux
+            </a>
+        </div>
+        <div><img class="vhdusb" src="https://i.postimg.cc/bJNTzQHQ/vhdusbdownloader.png" /></div>
+        <div class="section">
+            <p>Simply copy the VHD download link above and paste it into the VHDUSB Downloader app to start downloading
+                your optimized disk.</p>
+        </div>
+
+        <div class="section">
+            <h2>Create Box Art & 3D Case</h2>
+            <p>Take your virtual machine projects to the next level by designing custom
+                <strong>box art</strong> and a <strong>3D-printed case</strong> for your team’s
+                portable development environment. Perfect for showcasing your work, building
+                team identity, or preparing demo-ready kits.
+            </p>
+
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/INSERT_A4_300DPI.png" alt="Insert Artwork"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>Insert A4 300dpi</strong><br>Create insert artwork for your case</p>
+                    <p><a href="" target="_blank" rel="norefferer">PNG</a>|<a href="" target="_blank"
+                            rel="norefferer">PDF</a></p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/MANUAL_A4_300DPI.png" alt="Manual Artwork"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>Manual A4 300dpi</strong><br>Instructions for your physical disk</p>
+                    <p><a href="" target="_blank" rel="norefferer">PNG</a>|<a href="" target="_blank"
+                            rel="norefferer">PDF</a></p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/BOXART_A4_BACK_300DPI.png" alt="Box Back"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>Box Art Back A4 300dpi</strong><br>Hard paper back for your case</p>
+                    <p><a href="" target="_blank" rel="norefferer">PNG</a>|<a href="" target="_blank"
+                            rel="norefferer">PDF</a></p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/BOXART_A4_FRONT_300DPI.png" alt="Box Front"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>Box Art Front A4 300dpi</strong><br>Hard paper front for your case</p>
+                    <p><a href="" target="_blank" rel="norefferer">PNG</a>|<a href="" target="_blank"
+                            rel="norefferer">PDF</a></p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/BOXART_A3_FRONTBACK_300DPI.png" alt="Box Front"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>Box Art Front-Back A3 300dpi</strong><br>Hard paper front and back for your case</p>
+                    <p><a href="" target="_blank" rel="norefferer">PNG</a>|<a href="" target="_blank"
+                            rel="norefferer">PDF</a></p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/STICKER_A4_300DPI.png" alt="Box Front"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>Stickers A4 300dpi</strong><br>Stickers for your case</p>
+                    <p><a href="" target="_blank" rel="norefferer">PNG</a>|<a href="" target="_blank"
+                            rel="norefferer">PDF</a></p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/usb-fit-plus-case.png" alt="3D Case Example"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>3d printed USB HEAD</strong><br>
+                        Print 3d head for SAMSUNG Fit-Plus usb</p>
+                </div>
+                <div style="flex: 1 1 45%; text-align: center;">
+                    <img src="https://cdn.sdappnet.cloud/rtx/images/vhd-case-3d.jpeg" alt="3D Case Example"
+                        style="width:100%; max-width:250px; border-radius: 8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                    <p><strong>3d printed USB CASE</strong><br>
+                        Print 3d case for SAMSUNG Fit-Plus usb</p>
+                </div>
+            </div>
+
+            <p style="margin-top:15px;">
+                Follow this guide to design, print, and share
+                your own <strong>development box art & cases</strong> for collaboration or team distribution.
+            </p>
+
+            <div
+                style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-top: 10px;">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+
+        </div>
+        <div class="section">
+            <h2>🌍 Share Your Build with the Community</h2>
+            <p>Contribute back by sharing your custom development box. Add a screenshot of your
+                desktop and the storage link for your <strong>bootable-fixed.vhd</strong>. This allows
+                others to quickly clone and test your virtual images.</p>
+            <p style="background:#fff3cd; color:#856404; padding:10px; border-radius:6px;">
+                ⚠️ Important: All submissions must be free of viruses or malware. Each VHD will be tested by community
+                members
+                before public sharing.
+            </p>
+
+            <p>Just commit the following JSON file to our <strong>GitHub</strong> repository:</p>
+
+            <pre
+                style="background:#f9f9f9; padding:15px; border-radius:6px; font-size:0.9rem; overflow-x:auto; border:1px solid #ddd;">
+{
+  "url": "sas_token_url_for_storage",
+  "vm_name": "ue3dhxm-117293-fixed-bootable.vhd",
+  "size_in_gb": "220",
+  "image_url": "screenshot_of_desktop_url"
+}
+  </pre>
+
+            <p style="margin-top:15px;">🔗 Once submitted, your build will be listed in the community gallery so others
+                can
+                explore and use it in their own virtual machines.</p>
+
+            <a href="https://github.com/SongDrop/rtxapi" class="btn btn-primary" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"
+                    style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 
+        5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49
+        -2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82
+        .72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07
+        -1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+        -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82
+        .64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27
+        1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+        .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95
+        .29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2
+        0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8
+        c0-4.42-3.58-8-8-8z" />
+                </svg>
+                Contribute on GitHub
+            </a>
+
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Cloud Infrastructure Manager | Download your development .vhd to USB</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('copy-vhd-url').addEventListener('click', function () {
+            const input = document.getElementById('vhd-url-input');
+            input.select();
+            input.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(input.value).then(() => {
+                const originalBg = input.style.backgroundColor;
+                input.style.backgroundColor = '#d4edda'; // light green flash
+                alert('VHD URL copied! Open VHDUSBDownloader to download large files.');
+                setTimeout(() => input.style.backgroundColor = originalBg, 800);
+            });
+        });
+    </script>
+    <script>
+        (function () {
+            // Parse URL parameters
+            const params = new URLSearchParams(window.location.search);
+            const snapshotName = params.get('snapshot_vm');
+            const vhdUrl = params.get('url');
+            console.log(snapshotName, vhdUrl);
+            // Replace Snapshot Name
+            const snapshotElem = document.querySelector('.detail-row span + span');
+            if (snapshotElem && snapshotName) {
+                snapshotElem.textContent = snapshotName;
+            }
+
+
+
+            // Replace VHD Download URL
+            const vhdInput = document.getElementById('vhd-url-input');
+            if (vhdInput && vhdUrl) {
+                vhdInput.value = vhdUrl;
+            }
+        })();
+    </script>
+</body>
+
+</html>

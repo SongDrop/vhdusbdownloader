@@ -1,0 +1,44 @@
+{
+  "name": "vhdusbdownloader",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron src/main.js",
+    "build-mac": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.rtxdevstation.vhdusbdownloader",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "package.json",
+      "!src/venv/**",
+      "!src/__pycache__/**",
+      "!src/build/**",
+      "!src/dist/**",
+      "!src/*.spec"
+    ],
+    "extraResources": [
+      {
+        "from": "src/dist/usb_downloader",
+        "to": "usb_downloader",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      "**/*.py"
+    ],
+    "win": {
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "icon": "build/icon.icns"
+    }
+  }
+}

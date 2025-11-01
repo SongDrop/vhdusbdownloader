@@ -1,0 +1,7 @@
+tqdm
+requests
+pyinstaller
+filelock
+urllib3
+azure-storage-blob 
+azure-identity
