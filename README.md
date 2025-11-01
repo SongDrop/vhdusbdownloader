@@ -19,9 +19,9 @@ This is an Electron app that allows you to download large files (like VHD snapsh
 2. Run `npm install` to install Electron and dependencies.
 3. Start the app with:
 
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 4. Enter the **file URL** and **destination path** (USB drive recommended).
 5. Monitor download progress through the GUI.
@@ -35,23 +35,23 @@ This project uses Electron to package the app and create platform-specific build
 
 1. Install build dependencies:
 
-\`\`\`bash
+```bash
 npm install electron-builder --save-dev
-\`\`\`
+```
 
 2. Build the app for Windows:
 
-\`\`\`bash
+```bash
 npm run build-win
-\`\`\`
+```
 
 - Output: `./dist/win-unpacked/`
 
 3. Create the Windows installer:
 
-\`\`\`bash
+```bash
 npm run build-installer
-\`\`\`
+```
 
 - Output: `./installer/VHDUSBDownloaderInstaller.exe`
 
@@ -73,28 +73,31 @@ chmod +x gen-certs.sh code-sign-windows.sh verify-sign-windows.sh # ensure scrip
 
 # CA certificate details
 
+```bash
 CA_COUNTRY="GB"
 CA_STATE="United Kingdom"
 CA_CITY="London"
 CA_ORG="rtxdevstation.xyz"
 CA_UNIT="open-source-development"
 CA_COMMON_NAME="rtxdevstation"
+```
 
 # Signing certificate details
 
+```bash
 SIGN_COUNTRY="US"
 SIGN_STATE="United Kingdom"
 SIGN_CITY="London"
 SIGN_ORG="rtxdevstation.xyz"
 SIGN_UNIT="open-source-development"
 SIGN_COMMON_NAME="rtxdevstation"
-\`\`\`
+```
 
 ### macOS
 
 1. Install build dependencies:
 
-\`\`\`bash
+```bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -102,31 +105,31 @@ export NODE_OPTIONS=--openssl-legacy-provider
 node -v
 npm -v
 npm install electron-builder --save-dev
-\`\`\`
+```
 
 2. Build the app for macOS:
 
-\`\`\`bash
+```bash
 npm run build-mac
-\`\`\`
+```
 
 - Output: `./dist/mac/` containing `VHDUSBDownloader.app`
 
 3. (Optional) Notarize the app with Apple to avoid security warnings:
 
-\`\`\`bash
+```bash
 xcrun altool --notarize-app -f ./dist/mac/VHDUSBDownloader.app --primary-bundle-id "com.yourdomain.vhdusbdownloader" -u "APPLE_ID" -p "APP_SPECIFIC_PASSWORD"
-\`\`\`
+```
 
 4. After notarization, staple the ticket to the app:
 
-\`\`\`bash
+```bash
 xcrun stapler staple ./dist/mac/VHDUSBDownloader.app
-\`\`\`
+```
 
 ## Suggested Folder Structure
 
-\`\`\`
+```bash
 vhdusbdownloader/
 ├─ build/ # Icons, assets
 ├─ certs/ # Optional certificates for signing
@@ -139,7 +142,7 @@ vhdusbdownloader/
 ├─ package.json
 ├─ build-installer.js
 └─ README.md
-\`\`\`
+```
 
 ## Notes
 
@@ -149,15 +152,13 @@ vhdusbdownloader/
 - Recommended file types: `.vhd`, `.iso`, large archives.
 - On macOS, the `.app` bundle can be copied to `/Applications` for easy access.
 
-```
+```bash
 python3.10 -m venv myenv
 source myenv/bin/activate
 pip install -r requirements.txt
-
-
 ```
 
-```
+```bash
 cd src
 python3 -m venv venv
 source venv/bin/activate   # on Mac/Linux
@@ -174,8 +175,6 @@ npm -v
 rm -rf distnpm
 npm install
 npm run build-mac
-
-
 ```
 
 ## License
