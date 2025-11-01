@@ -59,17 +59,15 @@ npm run build-installer
 
 5. Generate self-signed Windows certificate to avoid flagging during download:
 
-\`\`\`bash
+```bash
 cd code-sign-windows-master
 chmod +x gen-certs.sh code-sign-windows.sh verify-sign-windows.sh # ensure scripts have execute permission
 ./gen-certs.sh # generate certificates
 ./code-sign-windows.sh "yourelectronapp.exe" # sign your exe with certificate
 ./verify-sign-windows.sh "yourelectronapp.exe" # verify certificate signing
-\`\`\`
+```
 
 - Modify company details in `gen-certs.sh`:
-
-\`\`\`bash
 
 # CA certificate details
 
